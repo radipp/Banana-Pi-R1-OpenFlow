@@ -38,4 +38,13 @@ This guide will provide a simple how to in installing the SBC and will provide a
 ### Setting up the Banana Pi
 Check the link above to download the OS for Banana Pi. I am using the Armbian_5.31_Lamobo-r1_Debian_jessie_next_4.9.7 version for my project. Let it burn to a MicroSD card, put it in, and Connect a 5V 2A power source to the furthermost Micro USB Port (the one nearest to the corner). The other Micro USB port is for OTG USB and it may damage the device when inserted with a power source.
 
-Once it boots, you can log in with username: root and password: 1234. Next you will be prompted to change the password. After that, you can start filling in the script commands.
+Once it boots, you can log in with username: root and password: 1234. Next you will be prompted to change the password.
+
+### Adding Script
+After the initial configuration, add the dsa_config script in /etc/network/if-pre-up/ and fill in the necessary privileges to make it run every start up.
+
+### Installing Open vSwitch
+Installing Open vSwtich can be done with
+apt-get install openvswitch-switch
+
+After the apt is installed, the DSA will function like an ordinary Open vSwitch that can understand commands like ovs-vsctl and ovs-ofctl.
