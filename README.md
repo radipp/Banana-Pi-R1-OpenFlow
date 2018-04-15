@@ -6,12 +6,12 @@ This is my campus project which I and my group was instructed to turn an SBC cal
 ![alt text](https://github.com/radipp/Banana-Pi-R1-OpenFlow/blob/master/images/BPI-R1%201.JPG "Banana Pi R1")
 
 When people looked at a Banana Pi R1, they probably thought that, well, it's an SBC with 5 ethernet ports. True, but this is one of those 'looks can be deceiving' cases. It looks and feels like it has 5 ethernet ports, While in fact, it is actually only had one that was logically connected to the processor, while physically, the only port was connected with a Distributed Switch Architecture with 5 physical port.
+
 ![alt text](https://github.com/radipp/Banana-Pi-R1-OpenFlow/blob/master/images/master%20fisik.png "Banana Raw Architecture")
 
 This is not a suitable environment to run an Open vSwitch Program, which requires that all physical port mapped logically and independently. The Idea is to split the only logical port, eth0, into 5 different sub-ports, each with their on VLAN tag which also are corresponding with the VLAN tag of the physical port. The result is a computer with the logical port connecting one on one with they physical port as shown below. Usually, it was done with a program known as SWconfig, but it was no longer ported to kernel 4.X and above as people claimed that it causes stability issues.
-![alt text](https://github.com/radipp/Banana-Pi-R1-OpenFlow/blob/master/images/hasilarmbian.png "Banana Result Architecture")
 
-This guide will provide a simple how to in installing the SBC and will provide a script that will solve the networking issues with the DSA.
+![alt text](https://github.com/radipp/Banana-Pi-R1-OpenFlow/blob/master/images/hasilarmbian.png "Banana Result Architecture")
 
 ## Resources
 A Really Useful Guide about Banana Pi R1:
@@ -32,7 +32,10 @@ https://www.netdevconf.org/2.1/papers/distributed-switch-architecture.pdf
 
 Special thanks to the great people from the Armbian Forums and Banana Pi Forums for creating the startup and basic guides so that this project could be completed. Also thanks to Petra and Fandi as my project mates (I'll link them when they create an account), and my project counselors and lectures at my Uni. 
 
-## Installing the OS
-Check the link above to download the OS required to 
+## How To
+This guide will provide a simple how to in installing the SBC and will provide a script that will solve the networking issues with the DSA.
 
+### Setting up the Banana Pi
+Check the link above to download the OS for Banana Pi. I am using the Armbian_5.31_Lamobo-r1_Debian_jessie_next_4.9.7 version for my project. Let it burn to a MicroSD card, put it in, and Connect a 5V 2A power source to the furthermost Micro USB Port (the one nearest to the corner). The other Micro USB port is for OTG USB and it may damage the device when inserted with a power source.
 
+Once it boots, you can log in with username: root and password: 1234. Next you will be prompted to change the password. After that, you can start filling in the script commands.
