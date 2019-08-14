@@ -59,7 +59,7 @@ Voila, you should have an OpenvSwitch Switch for about $100 you can tinker and t
 
 ## Testing and Results
 I configure my OpenvSwitch so that eth0.10 to eth0.40 are the switch ports and the eth0.50 is the management port that connects to the SDN controller
-I use open Daylight and run a standard switching flow with 2 clients and to servers as shown below:
+I use open Daylight and run a standard switching flow with 2 clients and to servers:
 ![alt text](https://github.com/radipp/Banana-Pi-R1-OpenFlow/blob/master/images/bananapitesting.PNG "Results")
 
 The result is, pretty bad, on full load, you can only expect 160 Mbps with 6 Mbps deviation.
