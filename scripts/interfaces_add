@@ -1,0 +1,7 @@
+#Add this to your etc/network/interfaces file to make sure that the dsa config runs everytime you boot
+#I give eth0.50 IP address and use it as a management port to communicate with an SDN controller
+
+allow-hotplug eth0
+iface eth0 inet dhcp
+pre-up /etc/network/if-pre-up.d/dsaifconfig 
+eth0.50 [Alamat IP] netmask [Netmask]

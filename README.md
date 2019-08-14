@@ -40,11 +40,32 @@ Check the link above to download the OS for Banana Pi. I am using the Armbian_5.
 
 Once it boots, you can log in with username: root and password: 1234. Next you will be prompted to change the password.
 
+Before you add any scripts, you should probably encounter this when you do ifconfig:
+![alt text](https://github.com/radipp/Banana-Pi-R1-OpenFlow/blob/master/images/ifconfigbefore.png "Network Before")
+
 ### Adding Script
-After the initial configuration, add the dsa_config script in /etc/network/if-pre-up/ and fill in the necessary privileges to make it run every start up.
+After the initial configuration, add the dsa_config script in /etc/network/if-pre-up/ and add interfaces_add to the /etc/network/interfaces
+If you do this, you should have this instead when you do ifconfig everytime you boot up:
+![alt text](https://github.com/radipp/Banana-Pi-R1-OpenFlow/blob/master/images/ifconfigbefore.png "Network After")
+
 
 ### Installing Open vSwitch
 Installing Open vSwtich can be done with
 apt-get install openvswitch-switch
 
 After the apt is installed, the DSA will function like an ordinary Open vSwitch that can understand commands like ovs-vsctl and ovs-ofctl.
+
+Voila, you should have an OpenvSwitch Switch for about $100 you can tinker and test your apps
+
+## Testing and Results
+I configure my OpenvSwitch so that eth0.10 to eth0.40 are the switch ports and the eth0.50 is the management port that connects to the SDN controller
+I use open Daylight and run a standard switching flow with 2 clients and to servers as shown below:
+![alt text](https://github.com/radipp/Banana-Pi-R1-OpenFlow/blob/master/images/bananapitesting.png "Network After")
+
+The result is, pretty bad, on full load, you can only expect 160 Mbps with 6 Mbps deviation.
+But I guess it is enough for testing your SDN skills and apps on an open environment, you wouldn't use it on a production scale.
+
+## Verdicts
+I'm done with this project, I already get my results and maybe if I had time, I can show you the Open Daylight apps that me and my team create for our Uni project
+[]
+
